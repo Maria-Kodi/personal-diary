@@ -37,38 +37,51 @@ export default function AddEntryModal({ isOpen, onClose, onAddEntry }) {
   };
 
   return (
-    <div>
-      <h2>Create Entry</h2>
-
-      <button onClick={onClose}>Close</button>
-
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
-
-        <input
-          placeholder="Image URL"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-        />
-
-        <textarea
-          placeholder="Content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
-
-        <button type="submit">Save</button>
-      </form>
+    <div className={`modal ${isOpen ? "modal-open" : ""}`}>
+      <div className="modal-box">
+  
+        <h3 className="font-bold text-lg mb-4">
+          Create Entry
+        </h3>
+  
+        <form onSubmit={handleSubmit} className="space-y-3">
+  
+          <input className="input input-bordered w-full"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+  
+          <input className="input input-bordered w-full"
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+  
+          <input className="input input-bordered w-full"
+            placeholder="Image URL"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+          />
+  
+          <textarea className="textarea textarea-bordered w-full"
+            placeholder="Content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+  
+          <div className="modal-action">
+            <button className="btn" type="button" onClick={onClose}>
+              Cancel
+            </button>
+  
+            <button className="btn btn-primary" type="submit">
+              Save
+            </button>
+          </div>
+  
+        </form>
+      </div>
     </div>
   );
 }
