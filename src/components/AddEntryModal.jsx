@@ -38,9 +38,9 @@ export default function AddEntryModal({ isOpen, onClose, onAddEntry }) {
 
   return (
     <div className={`modal ${isOpen ? "modal-open" : ""}`}>
-      <div className="modal-box">
+      <div className="modal-box bg-[#F1F7ED]">
   
-        <h3 className="font-bold text-lg mb-4">
+        <h3 className="font-bold text-lg mb-4 text-[#407948]">
           Create Entry
         </h3>
   
@@ -71,11 +71,11 @@ export default function AddEntryModal({ isOpen, onClose, onAddEntry }) {
           />
   
           <div className="modal-action">
-            <button className="btn" type="button" onClick={onClose}>
+            <button className="btn bg-[#E0EEC6] text-black border-none hover:bg-[#5A825C]" type="button" onClick={onClose}>
               Cancel
             </button>
   
-            <button className="btn btn-primary" type="submit">
+            <button className="btn bg-[#5A825C] text-white border-none hover:bg-[#243E36]" type="submit">
               Save
             </button>
           </div>

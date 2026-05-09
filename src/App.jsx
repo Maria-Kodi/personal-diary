@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 
+import Header from "./components/Header";
 import EntryList from "./components/EntryList";
 import AddEntryModal from "./components/AddEntryModal";
 import ViewEntryModal from "./components/ViewEntryModal";
+import Footer from "./components/Footer";
 
 function App() {
   // load from localStorage
@@ -33,26 +35,14 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-base-200">
+    <div className="min-h-screen bg-[#E0EEC6] flex flex-col">
 
       {/* NAVBAR */}
-      <div className="navbar bg-base-100 shadow-md px-6">
-        <div className="flex-1">
-          <a className="text-xl font-bold">Personal Diary</a>
-        </div>
 
-        <div className="flex-none">
-          <button
-            className="btn btn-primary"
-            onClick={() => setIsAddModalOpen(true)}
-          >
-            + Add Entry
-          </button>
-        </div>
-      </div>
+      <Header onOpenModal={() => setIsAddModalOpen(true)} />
 
       {/* CONTENT */}
-      <div className="max-w-5xl mx-auto p-6">
+      <div className="max-w-5xl mx-auto p-6 flex-grow">
         <EntryList entries={entries} onView={handleView} />
       </div>
 
@@ -69,6 +59,8 @@ function App() {
         onClose={() => setIsViewModalOpen(false)}
         entry={selectedEntry}
       />
+
+     <Footer />
 
     </div>
   );
