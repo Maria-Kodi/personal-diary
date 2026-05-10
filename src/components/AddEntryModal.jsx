@@ -11,7 +11,6 @@ export default function AddEntryModal({ isOpen, onClose, onAddEntry }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // FR010 - validation (simple)
     if (!title || !date || !imageUrl || !content) {
       alert("Please fill all fields");
       return;
@@ -27,7 +26,6 @@ export default function AddEntryModal({ isOpen, onClose, onAddEntry }) {
 
     onAddEntry(newEntry);
 
-    // reset form
     setTitle("");
     setDate("");
     setImageUrl("");
@@ -49,26 +47,22 @@ export default function AddEntryModal({ isOpen, onClose, onAddEntry }) {
           <input className="input input-bordered w-full"
             placeholder="Title"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
+            onChange={(e) => setTitle(e.target.value)}/>
   
           <input className="input input-bordered w-full"
             type="date"
             value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
+            onChange={(e) => setDate(e.target.value)}/>
   
           <input className="input input-bordered w-full"
             placeholder="Image URL"
             value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
-          />
+            onChange={(e) => setImageUrl(e.target.value)}/>
   
           <textarea className="textarea textarea-bordered w-full"
             placeholder="Content"
             value={content}
-            onChange={(e) => setContent(e.target.value)}
-          />
+            onChange={(e) => setContent(e.target.value)}/>
   
           <div className="modal-action">
             <button className="btn bg-[#E0EEC6] text-black border-none hover:bg-[#5A825C]" type="button" onClick={onClose}>
@@ -79,7 +73,6 @@ export default function AddEntryModal({ isOpen, onClose, onAddEntry }) {
               Save
             </button>
           </div>
-  
         </form>
       </div>
     </div>

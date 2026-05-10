@@ -7,61 +7,58 @@ import ViewEntryModal from "./components/ViewEntryModal";
 import Footer from "./components/Footer";
 
 function App() {
-  // load from localStorage
   const [entries, setEntries] = useState(() => {
     const saved = localStorage.getItem("entries");
-    return saved ? JSON.parse(saved) : [];
+    try {
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
   });
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-
   const [selectedEntry, setSelectedEntry] = useState(null);
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
 
-  // save to localStorage
   useEffect(() => {
     localStorage.setItem("entries", JSON.stringify(entries));
   }, [entries]);
 
-  // add entry
   function addEntry(newEntry) {
+    const exists = entries.some((entry) => entry.date === newEntry.date);
+
+    if (exists) {
+      alert("You already created an entry for this day!");
+      return;
+    }
+
     setEntries((prev) => [newEntry, ...prev]);
   }
 
-  // open view modal
-  function handleView(entry) {
+  const handleView = (entry) => {
     setSelectedEntry(entry);
     setIsViewModalOpen(true);
-  }
+  };
 
   return (
-    <div className="min-h-screen bg-[#E0EEC6] flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-[#dce9c8] to-[#eef5e6] flex flex-col">
+      <Header onOpenModal={() => setIsAddModalOpen(true)}/>
 
-      {/* NAVBAR */}
-
-      <Header onOpenModal={() => setIsAddModalOpen(true)} />
-
-      {/* CONTENT */}
       <div className="max-w-5xl mx-auto p-6 flex-grow">
-        <EntryList entries={entries} onView={handleView} />
+        <EntryList entries={entries} onView={handleView}/>
       </div>
 
-      {/* ADD MODAL */}
       <AddEntryModal
         isOpen={isAddModalOpen}
         onClose={() => setIsAddModalOpen(false)}
-        onAddEntry={addEntry}
-      />
+        onAddEntry={addEntry}/>
 
-      {/* VIEW MODAL */}
       <ViewEntryModal
         isOpen={isViewModalOpen}
         onClose={() => setIsViewModalOpen(false)}
-        entry={selectedEntry}
-      />
+        entry={selectedEntry}/>
 
-     <Footer />
-
+      <Footer/>
     </div>
   );
 }

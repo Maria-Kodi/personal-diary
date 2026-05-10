@@ -21,8 +21,7 @@ export default function ViewEntryModal({
             <img
               src={entry.imageUrl}
               alt={entry.title}
-              className="w-full h-48 object-cover rounded mb-4"
-            />
+              className="w-full h-48 object-cover rounded mb-4"/>
           )}
   
           <p className="mb-6">
@@ -33,8 +32,7 @@ export default function ViewEntryModal({
             <button className="btn" onClick={onClose}>
               Close
             </button>
-          </div>
-  
+          </div> 
         </div>
       </div>
     );
