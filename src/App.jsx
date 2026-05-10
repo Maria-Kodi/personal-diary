@@ -40,6 +40,10 @@ function App() {
     setIsViewModalOpen(true);
   };
 
+  function deleteEntry(id) {
+    setEntries((prev) => prev.filter((e) => e.id !== id));
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#dce9c8] to-[#eef5e6] flex flex-col">
       <Header onOpenModal={() => setIsAddModalOpen(true)}/>
@@ -56,7 +60,8 @@ function App() {
       <ViewEntryModal
         isOpen={isViewModalOpen}
         onClose={() => setIsViewModalOpen(false)}
-        entry={selectedEntry}/>
+        entry={selectedEntry}
+        onDelete={deleteEntry}/>
 
       <Footer/>
     </div>

@@ -11,7 +11,7 @@ export default function AddEntryModal({ isOpen, onClose, onAddEntry }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!title || !date || !imageUrl || !content) {
+    if (!title || !date || !content) {
       alert("Please fill all fields");
       return;
     }
