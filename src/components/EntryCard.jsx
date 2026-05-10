@@ -1,13 +1,15 @@
 export default function EntryCard({ entry, onView }) {
   return (
-    <div className="card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300">
+    <div className="card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer">
 
-      {entry.imageUrl && (
+      {entry.imageUrl?.trim() && (
         <figure>
           <img
             src={entry.imageUrl}
             alt={entry.title}
-            className="h-44 w-full object-cover"/>
+            className="h-44 w-full object-cover"
+            onError={(e) => e.target.parentElement.style.display = "none"}
+          />
         </figure>
       )}
 
@@ -21,7 +23,7 @@ export default function EntryCard({ entry, onView }) {
         </p>
 
         <p className="text-sm opacity-80">
-          {entry.content.length > 120
+          {(entry.content || "").length > 120
             ? entry.content.slice(0, 120) + "..."
             : entry.content}
         </p>
@@ -29,7 +31,8 @@ export default function EntryCard({ entry, onView }) {
         <div className="card-actions justify-end">
           <button
             className="btn btn-sm btn-outline"
-            onClick={() => onView(entry)}>
+            onClick={() => onView?.(entry)}
+          >
             View
           </button>
         </div>
