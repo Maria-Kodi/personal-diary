@@ -7,8 +7,7 @@ export default function EntryCard({ entry, onView }) {
           <img
             src={entry.imageUrl}
             alt={entry.title}
-            className="h-44 w-full object-cover"
-          />
+            className="h-44 w-full object-cover"/>
         </figure>
       )}
 
@@ -30,13 +29,11 @@ export default function EntryCard({ entry, onView }) {
         <div className="card-actions justify-end">
           <button
             className="btn btn-sm btn-outline"
-            onClick={() => onView(entry)}
-          >
+            onClick={() => onView(entry)}>
             View
           </button>
         </div>
       </div>
-
     </div>
   );
 }
